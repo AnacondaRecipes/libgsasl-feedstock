@@ -1,4 +1,4 @@
-{% set version = "1.8.0" %}
+{% set version = "1.8.1" %}
 
 package:
   name: libgsasl
@@ -7,10 +7,10 @@ package:
 source:
   fn: libgsasl-{{ version }}.tar.gz
   url: ftp://ftp.gnu.org/gnu/gsasl/libgsasl-{{ version }}.tar.gz
-  md5: 5dbdf859f6e60e05813370e2b193b92b
+  sha256: 19e2f90525c531010918c50bb1febef0d7115d620150cc66153b9ce73ff814e6
 
 build:
-  number: 3
+  number: 0
   # This package is a dependency of libhdfs3, which is primarily used with HDFS on Linux.
   skip: True  # [win]
   run_exports:
