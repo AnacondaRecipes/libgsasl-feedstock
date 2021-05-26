@@ -25,6 +25,7 @@ requirements:
     - libgcrypt
     - libntlm
     - krb5
+    - libgpg-error  # [linux and aarch64]
 
 test:
   commands:
@@ -32,9 +33,9 @@ test:
     - test -f $PREFIX/include/gsasl-mech.h
     - test -f $PREFIX/include/gsasl.h
     - test -f $PREFIX/lib/libgsasl.a
-    - test -f $PREFIX/lib/libgsasl.so         # [linux]
+    - test -f $PREFIX/lib/libgsasl$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/libgsasl.so.7       # [linux]
-    - test -f $PREFIX/lib/libgsasl.so.7.9.6   # [linux]
+    - test -f $PREFIX/lib/libgsasl.7.dylib    # [osx]
 
 about:
   home: http://www.gnu.org/software/gsasl/
