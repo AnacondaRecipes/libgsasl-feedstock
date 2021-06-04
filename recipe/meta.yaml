@@ -27,7 +27,6 @@ requirements:
     - libgcrypt
     - libntlm
     - krb5
-    - libidn2
 
 test:
   commands:
@@ -41,6 +40,7 @@ test:
 
 about:
   home: http://www.gnu.org/software/gsasl/
+  doc_url: https://www.gnu.org/software/gsasl/manual/gsasl.html
   license: LGPL-2.1-or-later
   license_file: 
     - COPYING.LIB
