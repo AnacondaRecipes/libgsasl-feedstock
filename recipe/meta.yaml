@@ -16,6 +16,8 @@ build:
   run_exports:
     # unknown.  Leaving defaults.
     - {{ pin_subpackage('libgsasl') }}
+  ignore_run_exports:
+    - libgcrypt
 
 requirements:
   build:
@@ -25,6 +27,8 @@ requirements:
     - libgcrypt
     - libntlm
     - krb5
+    - libidn2
+    - libntlm
 
 test:
   commands:
@@ -32,13 +36,13 @@ test:
     - test -f $PREFIX/include/gsasl-mech.h
     - test -f $PREFIX/include/gsasl.h
     - test -f $PREFIX/lib/libgsasl.a
-    - test -f $PREFIX/lib/libgsasl.so         # [linux]
+    - test -f $PREFIX/lib/libgsasl$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/libgsasl.so.7       # [linux]
-    - test -f $PREFIX/lib/libgsasl.so.7.9.6   # [linux]
+    - test -f $PREFIX/lib/libgsasl.7.dylib    # [osx]
 
 about:
   home: http://www.gnu.org/software/gsasl/
-  license: LGPL-2.1
+  license: LGPL-2.1-or-later
   license_family: LGPL
   summary: Implementation of the Simple Authentication and Security Layer framework
 
