@@ -28,14 +28,13 @@ requirements:
     - libntlm
     - krb5
     - libidn2
-    - libntlm
 
 test:
   commands:
     - test -f $PREFIX/include/gsasl-compat.h
     - test -f $PREFIX/include/gsasl-mech.h
     - test -f $PREFIX/include/gsasl.h
-    - test -f $PREFIX/lib/libgsasl.a
+    - test -f $PREFIsX/lib/libgsasl.a
     - test -f $PREFIX/lib/libgsasl$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/libgsasl.so.7       # [linux]
     - test -f $PREFIX/lib/libgsasl.7.dylib    # [osx]
@@ -43,6 +42,9 @@ test:
 about:
   home: http://www.gnu.org/software/gsasl/
   license: LGPL-2.1-or-later
+  license_file: 
+    - COPYING.LIB
+    - COPYING
   license_family: LGPL
   summary: Implementation of the Simple Authentication and Security Layer framework
 
