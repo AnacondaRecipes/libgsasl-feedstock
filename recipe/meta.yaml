@@ -21,6 +21,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - make  # [unix]
+    - libtool  # [not win]
   host:
     - libgcrypt
     - libntlm
