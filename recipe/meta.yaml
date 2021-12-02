@@ -1,5 +1,5 @@
 {% set name = "libgsasl" %}
-{% set version = "1.8.1" %}
+{% set version = "1.10.0" %}
 
 package:
   name: "{{ name }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://ftp.gnu.org/gnu/gsasl/{{ name }}-{{ version }}.tar.gz
-  sha256: 19e2f90525c531010918c50bb1febef0d7115d620150cc66153b9ce73ff814e6
+  sha256: f1b553384dedbd87478449775546a358d6f5140c15cccc8fb574136fdc77329f
 
 build:
   number: 0
