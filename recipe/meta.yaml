@@ -17,8 +17,6 @@ build:
   run_exports:
     # unknown.  Leaving defaults.
     - {{ pin_subpackage('libgsasl') }}
-  ignore_run_exports:
-    - libgcrypt
 
 requirements:
   build:
@@ -27,6 +25,11 @@ requirements:
     - libtool  # [not win]
   host:
     - libgcrypt
+    - libntlm >=0.3.1
+    - krb5
+  run:
+    - libgcrypt
+    - libgpg-error  # [linux]
     - libntlm >=0.3.1
     - krb5
 
