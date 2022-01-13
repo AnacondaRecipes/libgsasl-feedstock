@@ -12,7 +12,8 @@ source:
 build:
   number: 0
   # This package is a dependency of libhdfs3, which is primarily used with HDFS on Linux.
-  skip: True  # [win]
+  # It's currently not available on s390x and there is no libgcrypt on s390x.
+  skip: True  # [win or s390x]
   run_exports:
     # unknown.  Leaving defaults.
     - {{ pin_subpackage('libgsasl') }}
