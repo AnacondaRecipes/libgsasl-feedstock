@@ -8,7 +8,7 @@ cp -r ${BUILD_PREFIX}/share/libtool/build-aux/config.* ./build-aux
     --with-gssapi-impl=mit \
     --with-libgcrypt \
     --with-libgcrypt-prefix="${PREFIX}" \
-    --with-openssl=auto \
+    --without-openssl \
     --prefix=$PREFIX \
     --build=${BUILD} \
     --host=${HOST}

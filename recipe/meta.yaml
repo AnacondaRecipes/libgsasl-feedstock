@@ -28,13 +28,8 @@ requirements:
     - libgcrypt
     - libgpg-error
     - libntlm
-    - openssl
   run:
-    - krb5
-    - libgcrypt
-    - libgpg-error
     - libntlm >=0.3.1
-    - openssl
 
 test:
   commands:
