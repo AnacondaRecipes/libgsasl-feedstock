@@ -26,7 +26,7 @@ requirements:
   host:
     - krb5
     - libgcrypt
-    - libgpg-error
+    - libgpg-error  # [linux]
     - libntlm
   run:
     - libntlm >=0.3.1
