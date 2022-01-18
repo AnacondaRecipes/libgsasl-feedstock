@@ -26,13 +26,11 @@ requirements:
   host:
     - krb5
     - libgcrypt
+    - libgpg-error  # [linux]
     - libntlm
   run:
     - krb5
     - libgcrypt
-    - libgpg-error  # [linux]
-    - libntlm >=0.3.1
-    - openssl
 
 test:
   commands:

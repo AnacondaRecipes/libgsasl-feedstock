@@ -6,7 +6,7 @@ cp -r ${BUILD_PREFIX}/share/libtool/build-aux/config.* ./build-aux
 
 ./configure --help
 
-./configure --with-gssapi-impl=mit --with-libgcrypt --with-openssl=auto --prefix=$PREFIX --build=${BUILD} --host=${HOST}
+./configure --with-gssapi-impl=mit --with-libgcrypt --prefix=$PREFIX --build=${BUILD} --host=${HOST}
 make -j${CPU_COUNT} ${VERBOSE_AT}
 
 # Attempt to fix some file number limits on testing on osx.
