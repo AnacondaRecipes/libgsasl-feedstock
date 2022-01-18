@@ -28,9 +28,6 @@ requirements:
     - libgcrypt
     - libgpg-error  # [linux]
     - libntlm
-  run:
-    - krb5
-    - libgcrypt
 
 test:
   commands:
