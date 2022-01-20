@@ -1,5 +1,5 @@
 {% set name = "libgsasl" %}
-{% set version = "1.8.1" %}
+{% set version = "1.10.0" %}
 
 package:
   name: "{{ name }}"
@@ -7,12 +7,13 @@ package:
 
 source:
   url: https://ftp.gnu.org/gnu/gsasl/{{ name }}-{{ version }}.tar.gz
-  sha256: 19e2f90525c531010918c50bb1febef0d7115d620150cc66153b9ce73ff814e6
+  sha256: f1b553384dedbd87478449775546a358d6f5140c15cccc8fb574136fdc77329f
 
 build:
   number: 0
   # This package is a dependency of libhdfs3, which is primarily used with HDFS on Linux.
-  skip: True  # [win]
+  # It's currently not available on s390x and there is no libgcrypt on s390x.
+  skip: True  # [win or s390x]
   run_exports:
     # unknown.  Leaving defaults.
     - {{ pin_subpackage('libgsasl') }}
@@ -23,9 +24,10 @@ requirements:
     - make  # [unix]
     - libtool  # [not win]
   host:
-    - libgcrypt
-    - libntlm
     - krb5
+    - libgcrypt
+    - libgpg-error  # [linux]
+    - libntlm
 
 test:
   commands:
@@ -35,13 +37,20 @@ test:
     - test -f $PREFIX/lib/libgsasl.a
     - test -f $PREFIX/lib/libgsasl.so         # [linux]
     - test -f $PREFIX/lib/libgsasl.so.7       # [linux]
-    - test -f $PREFIX/lib/libgsasl.so.7.9.6   # [linux]
+    - test -f $PREFIX/lib/libgsasl.so.7.10.0   # [linux]
+    - test -f $PREFIX/lib/libgsasl$SHLIB_EXT  # [unix]
+    - test -f $PREFIX/lib/libgsasl.7.dylib    # [osx]
 
 about:
   home: http://www.gnu.org/software/gsasl/
-  license: LGPL-2.1
+  license: LGPL-2.1-or-later
   license_family: LGPL
+  license_file: 
+    - COPYING.LIB
+    - COPYING
   summary: Implementation of the Simple Authentication and Security Layer framework
+  doc_url: https://www.gnu.org/software/gsasl/manual/
+  dev_url: https://git.savannah.gnu.org/cgit/gsasl.git
 
 extra:
   recipe-maintainers:

@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
+set -x
+
 cp -r ${BUILD_PREFIX}/share/libtool/build-aux/config.* ./build-aux
 
-./configure --with-gssapi-impl=mit --prefix=$PREFIX --build=${BUILD} --host=${HOST}
+./configure --help
+
+./configure --with-gssapi-impl=mit --with-libgcrypt --prefix=$PREFIX --build=${BUILD} --host=${HOST}
 make -j${CPU_COUNT} ${VERBOSE_AT}
 
- Attempt to fix some file number limits on testing on osx.
+# Attempt to fix some file number limits on testing on osx.
 if [[ ${target_platform} == osx-* ]]; then
     sudo sysctl -w kern.maxfiles=64000
     sudo sysctl -w kern.maxfilesperproc=64000
