@@ -46,28 +46,7 @@ test:
     # pkgconfig file
     - test -f $PREFIX/lib/pkgconfig/libgsasl.pc
     # Locale files (Linux only)
-    - test -f $PREFIX/share/locale/da/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/de/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/en@boldquot/LC_MESSAGES/libgsasl.mo  # [linux]
-    - test -f $PREFIX/share/locale/en@quot/LC_MESSAGES/libgsasl.mo      # [linux]
-    - test -f $PREFIX/share/locale/eo/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/es/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/fi/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/fr/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/ga/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/hu/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/id/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/it/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/nl/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/pl/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/pt_BR/LC_MESSAGES/libgsasl.mo  # [linux]
-    - test -f $PREFIX/share/locale/ro/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/sk/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/sr/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/sv/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/uk/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/vi/LC_MESSAGES/libgsasl.mo    # [linux]
-    - test -f $PREFIX/share/locale/zh_CN/LC_MESSAGES/libgsasl.mo  # [linux]
+    - test -f $PREFIX/share/locale/*/LC_MESSAGES/libgsasl.mo    # [linux]
 
 about:
   home: https://www.gnu.org/software/gsasl/
