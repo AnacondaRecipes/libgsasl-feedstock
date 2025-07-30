@@ -46,7 +46,7 @@ test:
     # pkgconfig file
     - test -f $PREFIX/lib/pkgconfig/libgsasl.pc
     # Locale files (Linux only)
-    - test -f $PREFIX/share/locale/*/LC_MESSAGES/libgsasl.mo    # [linux]
+    - for locale in $PREFIX/share/locale/*/LC_MESSAGES/libgsasl.mo; do test -f $locale; done  # [linux]
 
 about:
   home: https://www.gnu.org/software/gsasl/
