@@ -2,50 +2,57 @@
 {% set version = "1.10.0" %}
 
 package:
-  name: "{{ name }}"
-  version: "{{ version }}"
+  name: {{ name }}
+  version: {{ version }}
 
 source:
   url: https://ftp.gnu.org/gnu/gsasl/{{ name }}-{{ version }}.tar.gz
   sha256: f1b553384dedbd87478449775546a358d6f5140c15cccc8fb574136fdc77329f
 
 build:
-  number: 1
+  number: 2
   # This package is a dependency of libhdfs3, which is primarily used with HDFS on Linux.
-  # It's currently not available on s390x and there is no libgcrypt on s390x.
-  skip: True  # [win or s390x]
+  skip: true  # [win]
   run_exports:
     # unknown.  Leaving defaults.
     - {{ pin_subpackage('libgsasl') }}
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - make  # [unix]
     - libtool  # [not win]
+    - make     # [unix]
   host:
-    - krb5
-    - libgcrypt
-    - libgpg-error  # [linux]
-    - libntlm
+    - libkrb5 {{ krb5 }}
+    - libgcrypt {{ libgcrypt }}
+    - libgpg-error {{ libgpg_error }}  # [linux]
+    - libntlm {{ libntlm }}
 
 test:
   commands:
+    # Header files
     - test -f $PREFIX/include/gsasl-compat.h
     - test -f $PREFIX/include/gsasl-mech.h
     - test -f $PREFIX/include/gsasl.h
+    # Library files
     - test -f $PREFIX/lib/libgsasl.a
+    - test -f $PREFIX/lib/libgsasl.7.dylib    # [osx]
+    - test -f $PREFIX/lib/libgsasl.dylib      # [osx]
     - test -f $PREFIX/lib/libgsasl.so         # [linux]
     - test -f $PREFIX/lib/libgsasl.so.7       # [linux]
-    - test -f $PREFIX/lib/libgsasl.so.7.10.0   # [linux]
+    - test -f $PREFIX/lib/libgsasl.so.7.10.0  # [linux]
     - test -f $PREFIX/lib/libgsasl$SHLIB_EXT  # [unix]
-    - test -f $PREFIX/lib/libgsasl.7.dylib    # [osx]
+    # pkgconfig file
+    - test -f $PREFIX/lib/pkgconfig/libgsasl.pc
+    # Locale files (Linux only)
+    - for locale in $PREFIX/share/locale/*/LC_MESSAGES/libgsasl.mo; do test -f $locale; done  # [linux]
 
 about:
-  home: http://www.gnu.org/software/gsasl/
+  home: https://www.gnu.org/software/gsasl/
   license: LGPL-2.1-or-later
   license_family: LGPL
-  license_file: 
+  license_file:
     - COPYING.LIB
     - COPYING
   summary: Implementation of the Simple Authentication and Security Layer framework
