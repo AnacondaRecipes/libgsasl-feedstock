@@ -10,7 +10,7 @@ source:
   sha256: f1b553384dedbd87478449775546a358d6f5140c15cccc8fb574136fdc77329f
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
   run_exports:
     # Unknown. Leaving defaults.
@@ -27,7 +27,6 @@ requirements:
     - libkrb5 {{ krb5 }}
     - libgcrypt {{ libgcrypt }}
     - libgpg-error {{ libgpg_error }}  # [linux]
-    - libntlm {{ libntlm }}
 
 test:
   commands:
