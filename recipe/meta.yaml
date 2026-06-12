@@ -27,7 +27,6 @@ requirements:
     - libkrb5 {{ krb5 }}
     - libgcrypt {{ libgcrypt }}
     - libgpg-error {{ libgpg_error }}  # [linux]
-    - libntlm {{ libntlm }}
 
 test:
   commands:
